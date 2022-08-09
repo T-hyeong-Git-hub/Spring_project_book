@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.projectex.mapper.CartMapper">
+	<!-- 카트 추가 -->
+	<insert id="addCart">
+	
+		insert into gu_cart(cartId,memberId, bookId, bookCount)
+		values(seq_cartId_num.nextval, #{memberId}, #{bookId}, #{bookCount}) 
+	
+	</insert>
+	
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+	
+		delete from gu_cart where cartId = #{cartId}
+	
+	</delete>
+	
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount">
+	
+		update gu_cart set bookCount=#{bookCount} where cartId = #{cartId}
+	
+	</update>
+	
+	
+	<!-- 카트 목록 -->
+	<select id="getCart" resultType="com.projectex.model.CartDTO">
+	
+		select a.cartId, a.memberId, a.bookId, a.bookCount, b.bookName, b.bookPrice, b.bookDiscount
+		from gu_cart a left outer join gu_book b on a.bookId = b.bookId
+		where memberId = #{memberId}	
+	
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="com.projectex.model.CartDTO">
+	
+		select * from gu_cart 
+		where memberId = #{memberId} and bookId = #{bookId}
+	
+	</select>
+	
+	<!-- 카트 제거(주문) -->
+	<delete id="deleteOrderCart">
+	
+		delete from gu_cart where memberId = #{memberId} and bookId = #{bookId}
+	
+	</delete>
+	
+	
+  </mapper>

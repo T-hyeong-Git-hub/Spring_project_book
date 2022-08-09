@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.projectex.mapper.AdminMapper">
+	
+	<!-- 상품 등록 -->
+    <insert id="bookEnroll">
+    	 <selectKey resultType = "int" keyProperty = "bookId" order ="AFTER">
+    		
+    		SELECT SEQ_BOOKID_NUM.currval from dual 
+    	
+    	</selectKey> 
+		insert into gu_book(bookId,bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
+		values(seq_bookId_num.nextval,#{bookName},#{authorId}, #{publeYear},#{publisher},#{cateCode},#{bookPrice},#{bookStock},#{bookDiscount},#{bookIntro},#{bookContents})
+	
+	</insert>
+	
+	<!-- 카테고리 리스트 -->
+	<select id="cateList" resultType ="com.projectex.model.CateVO">
+		select * from gu_bcate order by catecode
+	</select>
+	
+	<!-- 상품 리스트 -->
+	<select id = "goodsGetList" resultType ="com.projectex.model.BookVO">
+		<![CDATA[
+			select * from(
+				select /*+INDEX_DESC(gu_book SYS_C007428)*/ rownum as rn, bookId, bookName,
+					(select authorName from gu_author where gu_book.authorId = gu_author.authorId) authorName,
+					(select cateName from gu_bcate where gu_book.cateCode = gu_bcate.cateCode) cateName,bookStock,regDate
+				from gu_book
+				where
+		]]>
+		
+			<if test = "keyword != null">
+				bookName like '%' || #{keyword} || '%' and			
+			</if>
+			
+		<![CDATA[
+			rownum <= #{pageNum} * #{amount}
+			)
+			where rn > (#{pageNum}-1) * #{amount}
+		]]>	
+				
+	</select>
+	
+		<!-- 상품 총 개수 -->
+  	<select id="goodsGetTotal" resultType="int">
+  	
+  		select count(*) from gu_book
+  		
+  		<if test="keyword != null">
+  		
+  			where bookName like '%' || #{keyword} || '%'
+  		</if>
+  		
+  	</select> 
+  	<!-- 상품 조회 페이지 -->
+  	<select id = "goodsGetDetail" resultType="com.projectex.model.BookVO">
+  		select bookId, bookName, (select authorName from gu_author where authorId = gu_book.authorId) authorName,
+  				authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents, regDate, updateDate 
+  		from gu_book where bookId = #{bookId}		
+  	</select>
+  	
+  	<!-- 상품 정보 수정 -->
+  	<update id = "goodsModify">
+  		
+  		update gu_book set bookName = #{bookName}, authorId = #{authorId}, publeYear = #{publeYear}, publisher = #{publisher}, cateCode = ${cateCode}, 
+		bookPrice = #{bookPrice}, bookStock = #{bookStock}, bookDiscount = #{bookDiscount}, bookIntro = #{bookIntro}, bookContents = #{bookContents}, updateDate = sysdate
+		where bookId = ${bookId}
+		
+  	</update>
+  	
+  	<!-- 상품 정보 삭제 -->
+  	<delete id="goodsDelete">
+  		delete from gu_book where bookId = #{bookId}
+  	</delete>
+  	
+  	<!-- 이미지 등록 -->
+  	<insert id = "imageEnroll">
+  		insert into gu_image(bookId, fileName, uploadPath, uuid) values (#{bookId}, #{fileName},#{uploadPath},#{uuid})
+  	</insert>
+  	
+  	<!-- 지정 상품 이미지 전체 삭제 -->
+  	<delete id = "deleteImageAll">
+  		delete from gu_image where bookId = #{bookId}
+  	</delete>
+  	
+  	<!-- 어제자 날짜 이미지 리스트 -->
+  	<select id = "checkFileList" resultType ="com.projectex.model.AttachImageVO">
+  		select * from gu_image where uploadpath = to_char(sysdate -1, 'yyyy\mm\dd')
+  	</select>
+  	
+  	<!-- 지정 상품 이미지 정보 얻기 -->
+  	<select id = "getAttachInfo" resultType = "com.projectex.model.AttachImageVO">
+  		select * from gu_image where bookId = #{bookId}
+  	</select>
+  	
+  	<!-- 주문 리스트 -->
+	<select id="getOrderList" resultType="com.projectex.model.OrderDTO">
+		<![CDATA[
+		select * 
+		from(
+		    select rownum rn, orderId, memberId, orderstate, orderdate
+		    from gu_order
+		    where rownum <= #{pageNum} * #{amount} 
+		]]>    
+		<if test="keyword != null">
+			and memberId like '%'||#{keyword}||'%'
+		</if>
+		<![CDATA[
+		    
+		    order by orderdate desc
+		    )
+		where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	</select>	
+	
+	<!-- 상품 총 개수 -->
+	<select id="getOrderTotal" resultType="int">
+	
+		select count(*) from gu_order
+		
+	    <if test="keyword != null">
+	    	where memberId like '%'||#{keyword}||'%'
+	    </if>
+	
+	</select>
+
+  </mapper>

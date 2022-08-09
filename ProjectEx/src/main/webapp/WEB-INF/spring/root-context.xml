@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"/>
+		<property name="username" value="GUHAEBANG"/>
+		<property name="password" value="1234"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>	
+	
+	
+    <!-- navermail설정 -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+     <property name="host" value="smtp.naver.com"/> <!-- 메이서버 호스트 -->
+     <property name="port" value="587"/> <!-- 메이서버 포트번호 -->
+     <property name="username" value="kkth0705@naver.com"/> <!-- 자신의 이메일 아이디 -->
+     <property name="password" value="cfgb07050922@"/> <!-- 자신의 비밀번호 -->
+       <!-- 보안연결 SSL과 관련된 설정 -->
+     <property name="javaMailProperties">
+      <props>
+      <prop key="mail.smtp.auth">true</prop>
+      <prop key="mail.smtp.starttls.enable">true</prop>
+      <prop key="mail.smtps.checkserveridentity">true</prop>
+      <prop key="mail.smtps.ssl.trust">*</prop>
+      <prop key="mail.debug">true</prop>
+      <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+      <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+      </props>
+     </property>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:annotation-driven /> <!-- 어노테이션 기반 트랜잭션을 사용하기 위해 추가해주는 태그 -->
+	
+	<task:annotation-driven/> <!-- 스케줄링 어노테이션 사용 -->
+	
+	
+	<mybatis-spring:scan base-package="com.projectex.mapper"/>
+	<context:component-scan base-package="com.projectex.model"></context:component-scan>
+	<context:component-scan base-package="com.projectex.service"></context:component-scan>
+	<context:component-scan base-package="com.projectex.task"></context:component-scan>
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- <context:component-scan base-package="com.projectex.sample"></context:component-scan>  -->
+	<!--com.projectex.sample는 스프링에서 인식해야할 객체가 담긴 패키지입니다.(자신이 인식시켜야할 객체를 가지고 있는 패키지를 기입하면됩니다. -->	
+</beans>
