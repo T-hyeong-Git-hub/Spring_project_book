@@ -30,5 +30,16 @@
   		WHERE memberId = #{memberId}
   	
   	</select>
+  	
+  	<!-- 카카오 정보 저장 -->
+  	<insert id="kakaoInsert" parameterType = "java.util.HashMap">
+  		insert into kakao_login(k_number,k_name, k_email)
+  				values(seq_k_number.nextval,#{nickname}, #{email})
+  	</insert>
+  	
+  	<!-- 카카오 정보 찾기 -->
+	<select id="findKakao" parameterType="java.util.HashMap" resultType="com.projectex.model.KakaoDTO">
+		select * from kakao_login where k_name=#{nickname} and k_email=#{email}
+	</select>
 
   </mapper>

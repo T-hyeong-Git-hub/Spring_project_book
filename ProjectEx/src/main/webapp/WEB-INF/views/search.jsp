@@ -123,7 +123,7 @@
 							<col width="120">
 							<col width="120">
 						</colgroup>
-						<tbody id="searchList>">
+						<tbody id="searchList">
 							<c:forEach items="${list}" var="list">
 								<tr>
 									<td class="image">
@@ -147,7 +147,7 @@
 									</td>
 									<td class="info">
 										<div class="rating">
-											평점(추후 추가)
+											${list.ratingAvg}
 										</div>
 									</td>
 									<td class="price">

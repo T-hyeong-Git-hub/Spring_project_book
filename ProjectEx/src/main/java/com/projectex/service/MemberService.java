@@ -1,5 +1,6 @@
 package com.projectex.service;
 
+import com.projectex.model.KakaoDTO;
 import com.projectex.model.MemberVO;
 
 public interface MemberService {
@@ -14,4 +15,11 @@ public interface MemberService {
 	
 	// 주문자 정보 
 	public MemberVO getMemberInfo(String memberId);
+	
+	//카카오 로그인 
+	public String getAccessToken(String authorize_code);
+	
+	//카카오 토근
+	public KakaoDTO getUserInfo(String access_Token);
+	
 }

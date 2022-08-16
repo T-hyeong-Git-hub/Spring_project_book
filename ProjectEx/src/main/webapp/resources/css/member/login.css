@@ -25,6 +25,43 @@
 	font-weight: 900;
 }
 
+/* 홈페이지 기능 네비  */
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: #000000;
+    position:relative;
+}
+.top_gnb_area .list{
+    position: absolute;
+    top: 0px;
+    right: 0;
+    
+}
+ 
+.top_gnb_area .list li{
+    list-style: none;    
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+/* 로고, 검색, 로그인 */
+.top_area{
+	width: 100%;
+    height: 150px;
+    /* background-color: #f7f0b9; */
+}
+/* 로고 영역 */
+.logo_area{
+	width: 25%;
+	height: 100%;
+	float:left;
+}
+.logo_area img{
+    width: 100%;
+    height: 100%;
+}
 
 /* 로그인 area */
 .id_input_box{
@@ -32,7 +69,7 @@
 	height:31px;
 	padding: 10px 14px;	
 	display: block;
-	width : 80%;
+	width : 35%;
 	margin : auto;	
 }
 .id_input{
@@ -51,7 +88,7 @@
 	height:31px;
 	padding: 10px 14px;	
 	display: block;
-	width : 80%;
+	width : 35%;
 	margin : auto;	
 }
 .pw_iput{
@@ -67,14 +104,82 @@
 	text-align: center;
 }
 .login_button{
-	width: 84%;
-    height: 80px;
+	width: 35%;
+    height: 60px;
     background-color: #6AAFE6;
     font-size: 40px;
     font-weight: 900;
     color: white;
     margin : auto;
 }
+
+.kakao_button_wrap{
+	margin-top: 40px;
+	text-align: center;
+	
+}
+
+/* footer navai 영역 */
+.footer_nav{
+    width:100%;
+    height:50px;
+}
+.footer_nav_container{
+    width: 100%;
+    height: 100%;
+    background-color:#8EC0E4;
+}
+.footer_nav_container>ul{
+    font-weight : bold;
+    float:left;
+    list-style:none;
+    position:relative;
+    padding-top:10px;
+    line-height: 27px;
+    font-family: dotum;
+    margin-left: 10px;
+}
+.footer_nav_container>ul>li{
+    display:inline;
+    width: 45px;
+    height: 19px;
+    padding: 10px 9px 0 10px;
+}
+.footer_nav_container>ul>span{
+    margin: 0 4px;
+}
+/* footer 영역 */
+.footer{
+    width:100%;
+    height:130px;
+    background-color:#D4DFE6;
+    padding-bottom : 50px;
+}
+.footer_container{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.footer_left>img {
+    width: 150%;
+    height: 130px;
+    margin-left: -20px;
+    margin-top: -12px;
+}
+.footer_left{
+    float :left;
+    width: 170px;
+    margin-left: 20px;
+    margin-top : 30px;
+    
+}
+.footer_right{
+    float :left;
+    width: 680px;
+    margin-left: 70px;
+    margin-top : 30px;
+}   
+
 
 /* float 속성 해제 */
 .clearfix{

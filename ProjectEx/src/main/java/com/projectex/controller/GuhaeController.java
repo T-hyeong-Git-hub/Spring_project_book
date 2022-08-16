@@ -55,6 +55,18 @@ public class GuhaeController {
 		model.addAttribute("ls", bookService.likeSelect());
 
 	}
+	
+	//카카오 페이지 이동
+		@RequestMapping(value = "/kakaoMain", method = RequestMethod.GET)
+		public void kakaoPageGET(Model model) {
+
+			logger.info("카카오 페이지 진입");
+			
+			model.addAttribute("cate1", bookService.getCateCode1());
+			model.addAttribute("cate2", bookService.getCateCode2());
+			model.addAttribute("ls", bookService.likeSelect());
+
+		}
 
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName){
@@ -96,10 +108,13 @@ public class GuhaeController {
 		logger.info("cri : " + cri);
 
 		List<BookVO> list = bookService.getGoodsList(cri);
+		
 		logger.info("pre list : " + list);
+		
 		if(!list.isEmpty()) {
 			model.addAttribute("list", list);
 			logger.info("list : " + list);
+		
 		} else {
 			model.addAttribute("listcheck", "empty");
 

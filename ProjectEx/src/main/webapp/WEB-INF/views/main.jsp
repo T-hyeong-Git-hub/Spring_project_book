@@ -70,7 +70,7 @@
 			<div class = "login_area">
 			
 				  <!-- 로그인 하지 않은 상태 -->
-                  <c:if test = "${member == null }">
+                  <c:if test = "${member == null}">
                     <div class="login_button"><a href="/member/login">로그인</a></div>
                     <span><a href="/member/join">회원가입</a></span>                
                   </c:if>   

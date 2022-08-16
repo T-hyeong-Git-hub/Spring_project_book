@@ -39,7 +39,7 @@
 	
 		<![CDATA[
 		    select * from(
-		        select /*+INDEX_DESC(gu_book SYS_C007428)*/ rownum as rn, bookId, bookName,
+		        select /*+INDEX_DESC(gu_book SYS_C007428)*/ rownum as rn, bookId, bookName,ratingAvg,
 		            (select authorName from gu_author where gu_book.authorId = gu_author.authorId) authorName, authorId,
 		            (select cateName from gu_bcate where gu_book.cateCode = gu_bcate.cateCode) cateName,cateCode, publisher, publeYear, bookPrice,bookDiscount  
 		        from gu_book
