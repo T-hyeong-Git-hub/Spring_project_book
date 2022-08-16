@@ -10,6 +10,7 @@
 <link rel ="stylesheet" href = "resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -78,10 +79,10 @@
                 <!-- 로그인한 상태 -->
                 <c:if test="${ kakaoN != null }">
                     <div class="login_success_area">
-                        <span>회원 : ${kakaoN}</span>
-                        <span>충전금액 : <fmt:formatNumber value="0" pattern="\#,###.##"/></span>
-                        <span>포인트 : <fmt:formatNumber value="0" pattern="#,###" /></span>
-                        <a href="/member/logout.do">로그아웃</a>
+                    	<span><i class="bi bi-person-fill">회원 : ${kakaoN}</i></span>
+                        <span><i class="bi bi-currency-dollar">충전금액 : <fmt:formatNumber value="0" pattern="\#,###.##"/></i></span>
+                        <span><i class="bi bi-coin">포인트 : <fmt:formatNumber value="0" pattern="#,###" /></i></span>
+                        <i class="bi bi-x-circle-fill"><a href="/member/logout.do">로그아웃</a></i>
                     </div>
                 </c:if>
 			</div>
@@ -132,7 +133,7 @@
 			
 					<div class="ls_wrap">
 				<div class="ls_div_subject">
-					평점 순 상품
+					<i class="bi bi-bag-check-fill">평점 순 상품</i>
 				</div>
 				<div class="ls_div">
 					<c:forEach items="${ls}" var="ls">

@@ -44,12 +44,12 @@
 		<div class="login_wrap"> 
 			<div class="id_wrap">
 					<div class="id_input_box">
-					 <input class="id_input" name ="memberId">
+					 <input class="id_input" name ="memberId" placeholder ="아이디">
 				</div>
 			</div>
 			<div class="pw_wrap">
 				<div class="pw_input_box">
-					<input class="pw_iput" type = "password" name ="memberPw">
+					<input class="pw_iput" type = "password" name ="memberPw" placeholder ="비밀번호">
 				</div>
 			</div>			
 			 <c:if test = "${result == 0 }">
@@ -62,7 +62,7 @@
 			<!-- b7dc113b5727c514f1080e4035d8952c-->
 				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=b7dc113b5727c514f1080e4035d8952c&
 					redirect_uri=http://localhost:8081/member/kakaoLogin&response_type=code">
-					<img src ="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style = "height: 60px; width:auto;"/>
+					<img src ="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style = "height: 60px; width:39%;"/>
 				</a>
 			</div>			
 		</div>

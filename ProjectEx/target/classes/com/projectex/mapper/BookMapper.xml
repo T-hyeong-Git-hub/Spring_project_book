@@ -155,15 +155,14 @@
 	
 	<!--  평줌 순 상품 정보  -->
 	<select id="likeSelect" resultType="com.projectex.model.SelectDTO">
-	
+		
 		select * from
-		(select rownum as rn, bookId, bookName, ratingAvg, (select cateName from gu_bcate where gu_book.cateCode = gu_bcate.cateCode) as cateName
+		(select rownum as rn, bookId,bookName,ratingAvg,cateName from (select bookId, bookName, ratingAvg, (select cateName from gu_bcate where gu_book.cateCode = gu_bcate.cateCode) as cateName
 		from gu_book
-		order by ratingAvg desc nulls last)
+		order by ratingAvg desc nulls last))
 		<![CDATA[
-		where rn < 9
-		]]>	
-	
+		where rn <9
+		]]>
 	</select>
 
 	

@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Welcome GUHAEBANG</title>
 <link rel ="stylesheet" href = "resources/css/search.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -59,7 +60,7 @@
                 					<option value = "A">작가</option>
                 				</select>
                 				<input type="text" name="keyword" value ="<c:out value ="${pageMaker.cri.keyword}"/>">
-                    			<button class='btn search_btn'>검 색</button>                				
+                    			<button class='btn search_btn'><i class="bi bi-search"></i></button>                				
                 			</div>
                 		</form>
                 	</div>
@@ -75,10 +76,10 @@
                 <!-- 로그인한 상태 -->
                 <c:if test="${ member != null }">
                     <div class="login_success_area">
-                        <span>회원 : ${member.memberName}</span>
-                        <span>충전금액 : <fmt:formatNumber value="${member.money }" pattern="\#,###.##"/></span>
-                        <span>포인트 : <fmt:formatNumber value="${member.point }" pattern="#,###" /></span>
-                        <a href="/member/logout.do">로그아웃</a>
+                        <span><i class="bi bi-person-fill">회원 : ${member.memberName}</i></span>
+                        <span><i class="bi bi-currency-dollar">충전금액 : <fmt:formatNumber value="${member.money }" pattern="\#,###.##"/></i></span>
+                        <span><i class="bi bi-coin">포인트 : <fmt:formatNumber value="${member.point }" pattern="#,###" /></i></span>
+                        <i class="bi bi-x-circle-fill"><a href="/member/logout.do">로그아웃</a></i>
                     </div>
                 </c:if>
 			</div>

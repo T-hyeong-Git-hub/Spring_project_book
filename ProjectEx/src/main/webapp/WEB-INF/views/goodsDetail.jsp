@@ -149,9 +149,13 @@
 			</div>				
 			<div class="content_middle">
 				<div class="book_intro">
+					<h2>책 소개</h2>
+					<br>
 					${goodsInfo.bookIntro}
 				</div>
 				<div class="book_content">
+					<h2>책 목차</h2>
+					<br>
 					${goodsInfo.bookContents }
 				</div>
 			</div>
