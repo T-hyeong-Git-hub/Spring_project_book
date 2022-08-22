@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,8 +60,7 @@
 				<input type="button" class="login_button" value="로그인">
 			</div>
 			<div class = "kakao_button_wrap">
-			<!-- b7dc113b5727c514f1080e4035d8952c-->
-				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=b7dc113b5727c514f1080e4035d8952c&
+				<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=<spring:eval expression="@config.getProperty('KAKAO_API_KEY')"/>&
 					redirect_uri=http://localhost:8081/member/kakaoLogin&response_type=code">
 					<img src ="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style = "height: 60px; width:39%;"/>
 				</a>
