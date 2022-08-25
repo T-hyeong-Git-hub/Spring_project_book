@@ -16,6 +16,11 @@
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/resources/css/member/login.css">
+ <style>
+	body{
+		background-image:url('../resources/image/background.jpg');
+	}
+</style> 
 </head>
 <body>
 

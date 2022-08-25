@@ -13,6 +13,11 @@
 		crossorigin="anonymous">
 </script>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script> 
+ <style>
+	body{
+		background-image:url('../resources/image/background.jpg');
+	}
+</style> 
 </head>
 
 <body>
