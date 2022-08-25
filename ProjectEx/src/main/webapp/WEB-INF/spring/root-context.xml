@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"/>
+		<property name="username" value="GUHAEBANG"/>
+		<property name="password" value="1234"/>
+	</bean> -->
+	
+	<!-- 커넥션 풀 사용을 위한 DataSource 빈 설정 (HikarCP) -->
+    <!-- DB 커넥션 객체 생성을 위한 커넥션 정보 빈 (JDBC드라이버, jdbcURL, 접속DB아이디, 접속DB비번) -->
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <!-- Log4jdbc-log4je 추가를 위한 드라이버와 URL 변경 -->
+        <!-- <property name="driverClassName" value="oracle.jdbc.pool.OracleDataSource" /> --> <!-- 안되면 oracle.jdbc.driver.OracleDriver -->
+        <!-- <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE" /> --> <!-- Oracle 11g 경우 XE / Oracle 19 경우 orcl -->
+        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+        <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
+        <property name="username" value="GUHAEBANG" />   <!-- Oracle 버전에 따라 계정명에 c##을 붙여주어야 하는 경우가 있습니다. -->
+        <property name="password" value="1234" /> 
+    </bean> 
+
+    <!-- 설정한 커넥션 객체 정보 빈을 참조하여 DB 접속을 위한 데이터소스 객체 빈 (사용을 완료하면 destroy-method 속성을 이용해 자동으로 자원 반납) -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close"> 
+        <constructor-arg ref="hikariConfig"></constructor-arg> 
+    </bean>
+	
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>	
+	
+	
+    <!-- navermail설정 -->
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+     <property name="host" value="smtp.naver.com"/> <!-- 메이서버 호스트 -->
+     <property name="port" value="587"/> <!-- 메이서버 포트번호 -->
+     <property name="username" value="kkth0705@naver.com"/> <!-- 자신의 이메일 아이디 -->
+     <property name="password" value="cfgb753669@"/> <!-- 자신의 비밀번호 -->
+       <!-- 보안연결 SSL과 관련된 설정 -->
+     <property name="javaMailProperties">
+      <props>
+      <prop key="mail.smtp.auth">true</prop>
+      <prop key="mail.smtp.starttls.enable">true</prop>
+      <prop key="mail.smtps.checkserveridentity">true</prop>
+      <prop key="mail.smtps.ssl.trust">*</prop>
+      <prop key="mail.debug">true</prop>
+      <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+      <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+      </props>
+     </property>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:annotation-driven /> <!-- 어노테이션 기반 트랜잭션을 사용하기 위해 추가해주는 태그 -->
+	
+	<task:annotation-driven/> <!-- 스케줄링 어노테이션 사용 -->
+	
+	<util:properties id="config" location="/WEB-INF/config/config.properties" />
+	
+	
+	
+	<mybatis-spring:scan base-package="com.projectex.mapper"/>
+	<context:component-scan base-package="com.projectex.model"></context:component-scan>
+	<context:component-scan base-package="com.projectex.service"></context:component-scan>
+	<context:component-scan base-package="com.projectex.task"></context:component-scan>
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- <context:component-scan base-package="com.projectex.sample"></context:component-scan>  -->
+	<!--com.projectex.sample는 스프링에서 인식해야할 객체가 담긴 패키지입니다.(자신이 인식시켜야할 객체를 가지고 있는 패키지를 기입하면됩니다. -->	
+</beans>
