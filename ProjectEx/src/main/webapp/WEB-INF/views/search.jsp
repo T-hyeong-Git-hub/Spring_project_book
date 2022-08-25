@@ -6,83 +6,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome GUHAEBANG</title>
+<title>Welcome GUHAEBOOK</title>
+<!-- slick - css -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link rel ="stylesheet" href = "resources/css/search.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </head>
 <body>
 
-<div class ="wrapper">
-	<div class ="wrap">
-		<div class = "top_gnb_area">
-            <ul class="list">
-            <c:if test = "${member == null}"> <!-- 로그인 x -->
-                <li >
-                    <a href="/member/login">로그인</a>
-                </li>
-                <li>
-                    <a href="/member/join">회원가입</a>
-                </li>
-                </c:if>
-                 <c:if test = "${member != null}"> <!-- 로그인 o -->
-                 	 <c:if test="${member.adminCk == 1 }"> <!-- 관리자 페이지 -->
-                        <li><a href="/admin/main">관리자 페이지</a></li>
-                    </c:if>
-                 <li>
-                 	<a id="gnb_logout_button">로그아웃</a>
-                 </li>
-                 <li>
-                 	마이 페이지
-                 </li>
-                  <li>
-                 	<a href="/cart/${member.memberId}">장바구니</a>
-                 </li>
-                </c:if> 	
-                <li>
-                    고객센터
-                </li>            
-            </ul>        
-		</div>
-		<div class ="top_area"> <!-- 로고 영역 -->
-			<div class = "logo_area">
-				<a href ="/main"><img src="resources/image/logo.png"></a>
-			</div>
-			<div class = "search_area">
-				<div class="search_wrap">
-                		<form id="searchForm" action="/search" method="get">
-                			<div class="search_input">
-                				<select name ="type">
-                					<option value = "T">책 제목</option>
-                					<option value = "A">작가</option>
-                				</select>
-                				<input type="text" name="keyword" value ="<c:out value ="${pageMaker.cri.keyword}"/>">
-                    			<button class='btn search_btn'><i class="bi bi-search"></i></button>                				
-                			</div>
-                		</form>
-                	</div>
-			</div>
-			<div class = "login_area">
-			
-				  <!-- 로그인 하지 않은 상태 -->
-                  <c:if test = "${member == null }">
-                    <div class="login_button"><a href="/member/login">로그인</a></div>
-                    <span><a href="/member/join">회원가입</a></span>                
-                  </c:if>   
-                  
-                <!-- 로그인한 상태 -->
-                <c:if test="${ member != null }">
-                    <div class="login_success_area">
-                        <span><i class="bi bi-person-fill">회원 : ${member.memberName}</i></span>
-                        <span><i class="bi bi-currency-dollar">충전금액 : <fmt:formatNumber value="${member.money }" pattern="\#,###.##"/></i></span>
-                        <span><i class="bi bi-coin">포인트 : <fmt:formatNumber value="${member.point }" pattern="#,###" /></i></span>
-                        <i class="bi bi-x-circle-fill"><a href="/member/logout.do">로그아웃</a></i>
-                    </div>
-                </c:if>
-			</div>
+	<%@include file="includes/member/header.jsp" %>
 			<div class = "clearfix"></div>
 		</div>
 		<div class = "content_area">
@@ -217,42 +155,7 @@
 		</div>
 		
 		 <!-- Footer 영역 -->
-        <div class="footer_nav">
-            <div class="footer_nav_container">
-                <ul>
-                    <li>회사소개</li>
-                    <span class="line">|</span>
-                    <li>이용약관</li>
-                    <span class="line">|</span>
-                    <li>고객센터</li>
-                    <span class="line">|</span>
-                    <li>광고문의</li>
-                    <span class="line">|</span>
-                    <li>채용정보</li>
-                    <span class="line">|</span>
-                </ul>
-            </div>
-        </div> <!-- class="footer_nav" -->
-        
-        <div class="footer">
-            <div class="footer_container">
-                
-                <div class="footer_left">
-                    <img src="resources/image/logo.png">
-                </div>
-                <div class="footer_right">
-                    (주) GUHAEBANG    대표이사 : OOO
-                    <br>
-                    사업자등록번호 : ooo-oo-ooooo
-                    <br>
-                    대표전화 : oooo-oooo(발신자 부담전화)
-                    <br>
-                    <br>
-                    COPYRIGHT(C) <strong>kimvampa.tistory.com</strong>    ALL RIGHTS RESERVED.
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div> <!-- class="footer" -->    
+			<%@include file="includes/member/footer.jsp" %>   
 	</div>
 </div>
 <script>
@@ -285,6 +188,8 @@
 	});
 	
 	$(document).ready(function(){
+		
+	
 		//검색 타입 selected
 		const selectedType = '<c:out value="${pageMaker.cri.type}"/>';
 		if(selectedType != ""){

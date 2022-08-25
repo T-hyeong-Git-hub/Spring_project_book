@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding:0;
+	font-family: 'Albert Sans', sans-serif;
+}
+a{
+	text-decoration: none;
+}
+/* 화면 전체 렙 */
+.wrapper{
+	width: 95%;
+	margin: auto;
+}
+/* content 랩 */
+.wrap{
+	width : 100%;
+	/* margin: auto; */
+}
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    position:relative;
+}
+
+.top_gnb_area .home_logo {
+	margin-left: 3%;
+	margin-top: 1.2%;
+}
+
+
+.top_gnb_area .list{
+	position: absolute;
+    top: 0px;
+    right: 0;
+    
+}
+.top_gnb_area .list li{
+	list-style: none;	
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+/* 로고, 검색, 로그인 */
+.top_area{
+	width: 100%;
+    height: 150px;
+    /* background-color: #f7f0b9; */
+}
+/* 로고 영역 */
+.logo_area{
+	width: 25%;
+	height: 100%;
+	float:left;
+}
+.logo_area img{
+	width: 100%;
+    height: 100%;
+}
+
+/* 검색 박스 영역 */
+.search_area{
+	width: 50%;
+	height: 100%;
+	float:left;	
+}
+.search_wrap{
+	width: 100%;
+    height: 100%;
+}
+#searchForm{
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_input{
+    display: flex;
+    height: 30%;	
+    width: 80%;	
+    border: 2px solid #6AAFE6;
+}
+.search_input select{
+	width: 30%;
+    text-align: center;
+    font-size: 15px;
+    border: none;	
+}
+.search_input input{
+    margin-left: 10px;
+    width: 57%;	
+    font-size: 18px;
+    padding-left: 2%;
+    border: none;
+}
+
+.search_input select:focus{
+	outline: 2px solid #6AAFE6;
+}
+
+/* 버튼 클릭 시 테두리 색 변경 */
+.search_input input:focus{
+	outline: 2px solid #6AAFE6;
+}
+
+.search_btn{
+	border: none;
+	margin-left: 10px;
+    width: 17%;
+    border-radius: 15px;
+    font-size: 17px;
+    font-weight: 600;	
+    background-color: white;
+    color: #102770;
+    box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+}	
+
+/* 로그인 버튼 영역 */
+.login_area{
+	width: 25%;
+	height: 100%;
+	display: inline-block;	
+	text-align: center;
+	margin-top: 1%;		
+}
+
+.login_button{
+	height: 50%;
+    background-color: #D4DFE6;
+    margin-top: 30px;
+    line-height: 77px;
+    font-size: 40px;
+    font-weight: 900;
+    border-radius: 10px;
+    cursor: pointer;	
+}
+.login_area>span{
+	margin-top: 10px;
+    font-weight: 900;
+    display: inline-block;
+}
+.login_button{
+	height : 50%;
+	background-color: #D4DFE6;
+	margin-top:40px;
+}
+
+/* 로그인 성공 영역 */
+.login_success_area{
+	height: 62%;
+    width: 65%;
+    border: 2px solid #6AAFE6;
+    border-radius: 15px;
+    margin: 5% auto;
+    padding-top: 5%;
+}
+.login_success_area>a{
+    font-size: 15px;
+    font-weight: 900;
+    display: inline-block;
+    margin-top: 5px;
+    background: #e1e5e8;
+    width: 82px;
+    height: 22px;
+    line-height: 22px;
+    border-radius: 25px;
+    color: #606267;    
+}
+.login_success_area>span{
+	display : block;
+	text-align: left;
+    margin-left: 10%;
+}

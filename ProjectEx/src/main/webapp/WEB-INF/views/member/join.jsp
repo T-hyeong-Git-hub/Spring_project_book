@@ -6,380 +6,401 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/css/member/join.css">
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+<script src="https://kit.fontawesome.com/1986c6b16c.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script> 
 </head>
+
 <body>
 
-<div class="wrapper">
-	<form id="join_form" method ="post">
-	<div class="wrap">
-			<div class="subjecet">
-				<span>회원가입</span>
-			</div>
+<!-- <div class="wrapper"> -->
+	<form id="join_form" method="post">
+	<!-- <div class="wrap"> -->
+		<div class="container">
+			
+			<div class="top_gnb_area">
+			   <a class="home_logo" href="/main">
+				<i class="fa-solid fa-house"></i>
+			  </a>
+					<ul class="list">
+							<li>
+								<a href="/member/login">로그인</a>	
+							</li>
+							<li>
+								<a href="/member/join">회원가입</a>
+							</li>
+					</ul>
+		     </div>
+			
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section pb-5 pt-5 pt-sm-2 text-center">
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="center-wrap">
+										<div class="section text-center">
+				<h4 class="title">Sign up</h4>
+				<!-- id -->
 			<div class="id_wrap">
 				<div class="id_name">아이디</div>
-				<div class="id_input_box">
-					<input class="id_input" name = "memberId">
-				</div>
+				<!-- <div class="id_input_box"> -->
+					<!-- 정보를 입력해야할 input태그에 속성 name태그 작성 -->
+					<input class="id_input form-style" name="memberId"> <!-- name속성으로 값을 전달 -->
+				<!-- </div> -->
 				<span class="id_input_re_1">사용 가능한 아이디입니다.</span>
 				<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
 				<span class="final_id_ck">아이디를 입력해주세요.</span>
-			</div>
+			<!-- </div> -->
+			
+			<!-- pw -->
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
-				<div class="pw_input_box">
-					<input class="pw_input" name = "memberPw">
-				</div>
-				<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
-			</div>
-			<div class="pwck_wrap">
-				<div class="pwck_name">비밀번호 확인</div>
-				<div class="pwck_input_box">
-					<input class="pwck_input">
-				</div>
-				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
-				 <span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
+				<!-- <div class="pw_input_box"> -->
+					<input class="pw_input form-style" name="memberPw">
+				<!-- </div> -->
+				<span class="final_pw_ck form-style">비밀번호를 입력해주세요.</span>
+				<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
                 <span class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
 			</div>
+			
+			<!-- pw_check -->
+			<div class="pwck_wrap">
+				<div class="pwck_name">비밀번호 확인</div>
+				<!-- <div class="pwck_input_box"> -->
+					<input class="pwck_input form-style">
+				<!-- </div> -->
+				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
+			</div>
+			
+			<!-- name -->
 			<div class="user_wrap">
 				<div class="user_name">이름</div>
-				<div class="user_input_box">
-					<input class="user_input" name = "memberName">
-				</div>
+				<!-- <div class="user_input_box"> -->
+					<input class="user_input form-style" name="memberName">
+				<!-- </div> -->
 				<span class="final_name_ck">이름을 입력해주세요.</span>
 			</div>
+			
+			<!-- email -->
 			<div class="mail_wrap">
 				<div class="mail_name">이메일</div> 
-				<div class="mail_input_box">
-					<input class="mail_input" name = "memberMail">
-				</div>
+				<!-- <div class="mail_input_box"> -->
+					<input class="mail_input form-style" name="memberMail">
+				<!-- </div> -->
 				<span class="final_mail_ck">이메일을 입력해주세요.</span>
-				<sapn class="mail_input_box_warn"></sapn>
+				<span class="mail_input_box_warn"></span>
+			</div>
+			
 				<div class="mail_check_wrap">
 					<div class="mail_check_input_box" id="mail_check_input_box_false">
-						<input class="mail_check_input" disabled = "disabled" >
+						<input class="mail_check_input form-style" disabled="disabled">
 					</div>
 					<div class="mail_check_button">
 						<span>인증번호 전송</span>
 					</div>
+				</div>
 					<div class="clearfix"></div>
 					<span id="mail_check_input_box_warn"></span>
-				</div>
-			</div>
+			
+			<!-- address -->
 			<div class="address_wrap">
 				<div class="address_name">주소</div>
-				<div class="address_input_1_wrap">
+				<!-- <div class="address_input_1_wrap"> -->
 					<div class="address_input_1_box">
-						<input class="address_input_1" name = "memberAddr1" readonly="readonly">
+						<input class="address_input_1 form-style" name="memberAddr1" readonly="readonly">
 					</div>
-					<div class="address_button" onclick = "execution_daum_address()">
+					<div class="address_button" onclick="execution_daum_address()">
 						<span>주소 찾기</span>
 					</div>
 					<div class="clearfix"></div>
-				</div>
+				<!-- </div> -->
 				<div class ="address_input_2_wrap">
 					<div class="address_input_2_box">
-						<input class="address_input_2" name = "memberAddr2" readonly="readonly">
+						<input class="address_input_2 form-style" name="memberAddr2" readonly="readonly">
 					</div>
 				</div>
 				<div class ="address_input_3_wrap">
 					<div class="address_input_3_box">
-						<input class="address_input_3" name = "memberAddr3" readonly="readonly">
+						<input class="address_input_3 form-style" name="memberAddr3" readonly="readonly">
 					</div>
 				</div>
 				<span class="final_addr_ck">주소를 입력해주세요.</span>
 			</div>
-			<div class="phone_wrap">
-				<div class="phone_name">핸드폰 번호</div>
-				<div class="phone_input_box">
-					<input class="phone_input" name = "memberPhone">
-				</div>
-				<span class="final_phone_ck">핸드폰 번호를 입력해주세요.</span>
-			</div>
+			
 			<div class="join_button_wrap">
 				<input type="button" class="join_button" value="가입하기">
 			</div>
-		</div>
-	</form>
+	 	 </div>
+   	   </div>
+  	  </div>
+ 	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
 </div>
+</div>
+	</form>
 
- 
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-var code = "";				//이메일 전송 인증번호 저장을 위한 코드
-
-
-
-/* 유효성 검사 통과유무 변수 */
-var idCheck = false;            // 아이디
-var idckCheck = false;            // 아이디 중복 검사
-var pwCheck = false;            // 비번
-var pwckCheck = false;            // 비번 확인
-var pwckcorCheck = false;        // 비번 확인 일치 확인
-var nameCheck = false;            // 이름
-var mailCheck = false;            // 이메일
-var mailnumCheck = false;        // 이메일 인증번호 확인
-var addressCheck = false         // 주소
-var phoneCheck = false;			 //핸드폰 번호
-
-
-$(document).ready(function(){
-	//회원가입 버튼(회원가입 기능 작동)
-	$(".join_button").click(function(){
+	/* 유효성 검사 통과유무 변수 */
+	var idCheck = false;            // 아이디
+	var idckCheck = false;          // 아이디 중복 검사
+	var pwCheck = false;            // 비번
+	var pwckCheck = false;          // 비번 확인
+	var pwckcorCheck = false;       // 비번 확인 일치 확인
+	var nameCheck = false;          // 이름
+	var mailCheck = false;          // 이메일
+	var mailnumCheck = false;       // 이메일 인증번호 확인
+	var addressCheck = false        // 주소
+	
+	var code = ""; 					// 이메일전송 인증번호 저장위한 코드
+	
+	<!-- 가입버튼을 누르면 form태그에 action(url)이 추가되고, form태그가 서버에 제출 된다는 의미 -->
+	$(document).ready(function(){
+		//회원가입 버튼(회원가입 기능 작동)
+		$(".join_button").click(function(){	// .은 class의 구분자 
 		
-		 /* 입력값 변수 */
-        var id = $('.id_input').val();                 // id 입력란
-        var pw = $('.pw_input').val();                // 비밀번호 입력란
-        var pwck = $('.pwck_input').val();            // 비밀번호 확인 입력란
-        var name = $('.user_input').val();            // 이름 입력란
-        var mail = $('.mail_input').val();            // 이메일 입력란
-        var addr = $('.address_input_3').val();        // 주소 입력란
-        var phone = $('.phone_input').val();			//핸드폰 입력란
-        
-        /* 아이디 유효성검사 */
-        if(id == ""){
-            $('.final_id_ck').css('display','block');
-            idCheck = false;
-        }else{
-            $('.final_id_ck').css('display', 'none');
-            idCheck = true;
-        }
-           
-        /* 비밀번호 유효성 검사 */
-        if(pw == ""){
-            $('.final_pw_ck').css('display','block');
-            pwCheck = false;
-        }else{
-            $('.final_pw_ck').css('display', 'none');
-            pwCheck = true;
-        }
-        
-        /* 비밀번호 확인 유효성 검사 */
-        if(pwck == ""){
-            $('.final_pwck_ck').css('display','block');
-            pwckCheck = false;
-        }else{
-            $('.final_pwck_ck').css('display', 'none');
-            pwckCheck = true;
-        }
-        /* 이름 유효성 검사 */
-        if(name == ""){
-            $('.final_name_ck').css('display','block');
-            nameCheck = false;
-        }else{
-            $('.final_name_ck').css('display', 'none');
-            nameCheck = true;
-        }
-        /* 이메일 유효성 검사 */
-        if(mail == ""){
-            $('.final_mail_ck').css('display','block');
-            mailCheck = false;
-        }else{
-            $('.final_mail_ck').css('display', 'none');
-            mailCheck = true;
-        }
-        /* 주소 유효성 검사 */
-        if(addr == ""){
-            $('.final_addr_ck').css('display','block');
-            addressCheck = false;
-        }else{
-            $('.final_addr_ck').css('display', 'none');
-            addressCheck = true;
-        }
-        /* 핸드폰 유효성 검사 */
-        if(phone == ""){
-        	$('.final_phone_ck').css('display','block');
-        	phoneCheck = false;
-        }else{
-        	$('.final_phone_ck').css('display','none');
-        	phoneCheck = true;
-        }
-        
-        /* 최종 유효성 검사 */
-        if(idCheck&&idckCheck&&pwCheck&&pwckCheck&&pwckcorCheck&&nameCheck&&mailCheck&&mailnumCheck&&addressCheck&&phoneCheck ){
-        	$("#join_form").attr("action", "/member/join");
-    		$("#join_form").submit(); 
-        }    
-			return false; //감싸고 있는 메서드(join_button click) 메서드 정상 종료되지 못할 경우를 대비해서 넣음.
-	});
-});
-
-//아이디 중복검사
-$('.id_input').on("propertychange change keyup paste input", function(){
-//propertychange change keyup paste input : 
-//input 변화를 실시간으로 감지하기 다섯가지 이벤트가 모두 리슨 상태인 것 즉, 가장 실시간이라고 볼 수 있다.
+			/* 입력값 변수 */
+			var id = $('.id_input').val();                 // id 입력란
+	        var pw = $('.pw_input').val();                 // 비밀번호 입력란
+	        var pwck = $('.pwck_input').val();             // 비밀번호 확인 입력란
+	        var name = $('.user_input').val();             // 이름 입력란
+	        var mail = $('.mail_input').val();             // 이메일 입력란
+	        var addr = $('.address_input_3').val();        // 주소 입력란
+	        
+	        /* 아이디 유효성 검사 */
+	        if(id == "") {				// 아이디 값 없으면
+	            $('.final_id_ck').css('display','block');
+	            idCheck = false;
+	        } else {					// 아이디 값 있으면
+	            $('.final_id_ck').css('display', 'none');
+	            idCheck = true;
+	        }
+			
+	        /* 비밀번호 유효성 검사 */
+	        if(pw == "") {				// 비밀번호 값 없으면
+	            $('.final_pw_ck').css('display','block');
+	            pwCheck = false;
+	        } else {					// 비밀번호 값 있으면
+	            $('.final_pw_ck').css('display', 'none');
+	            pwCheck = true;
+	        }
+	        
+	        /* 비밀번호 확인 유효성 검사 */
+	        if(pwck == "") {
+	            $('.final_pwck_ck').css('display','block');
+	            pwckCheck = false;
+	        } else {
+	            $('.final_pwck_ck').css('display', 'none');
+	            pwckCheck = true;
+	        }
+	        
+	        /* 이름 유효성 검사 */
+	        if(name == "") {
+	        	$('.final_name_ck').css('display', 'block');
+	            nameCheck = false;
+	        } else {
+	            $('.final_name_ck').css('display', 'none');
+	            nameCheck = true;
+	        }
+	        
+	        /* 이메일 유효성 검사 */
+	          if(mail == "") {
+	            $('.final_mail_ck').css('display','block');
+	            mailCheck = false;
+	        } else {
+	            $('.final_mail_ck').css('display', 'none');
+	            mailCheck = true;
+	        } 
+	        
+	        /* 주소 유효성 검사 */
+	        if(addr == "") {
+	            $('.final_addr_ck').css('display','block');
+	            addressCheck = false;
+	        } else {
+	            $('.final_addr_ck').css('display', 'none');
+	            addressCheck = true;
+	        }
+	        
+	        /* 최종 유효성 검사 모든 유효성 검사 변수들이 true가 되었는지 확인 */
+	        if(idCheck && idckCheck &&
+        	   pwCheck && pwckCheck && pwckcorCheck 
+        	   && nameCheck &&mailCheck && mailnumCheck 
+        	   && addressCheck ){
+	        	
+	        	$("#join_form").attr("action", "join");  // #은 id의 구분자 (form태그의 id)
+	        	$("#join_form").submit();
+	 
+	        }    
+	        
+	        return false;	// 유효성 검사 변수들 중 하나라도 false가 있을 경우 해당 코드를 읽음
+		});
 	
-	//console.log("keyup 테스트"); 테스트를 위한 console log
-	var memberId = $('.id_input').val();	//.id_input에 입력되는 값
-	var data = {memberId : memberId}		//'컨트롤에 넘길 데이터 이름' : '데이터(.id_input에 입력되는 값)'
+	/* 아이디 중복 검사 */
+	/* class=id_input 인 태그에 변화가 있을 때 마다 실행*/
+	$(".id_input").on("propertychange change keyup paste input", function(){
+	/* console.log("keyup 테스트"); */
 	
+	var memberId = $('.id_input').val();	// .id_input에 입력되는 값, val()메서드는 입력받은 value값을 가져오거나 원하는 값으로 set 가능
+	var data = {memberId : memberId}		// 컨트롤러에 넘길 데이터 이름
+	
+	/* ajax 부분 : js를 통해 서버와 브라우저가 비동기 방식으로 데이터를 교환 가능 
+	   비동기 방식 : 웹페이지를 리로드하지 않고 데이터를 불러오는 방식 
+	   즉, Ajax를 통해서 섭에 요청을 한 후 멈추어 있는 것이 아니라 그 프로그램은 계속 돌아감
+	   보통 WEB화면에서 무언ㄱ ㅏ부르거나 데이터를 조회하고 싶을 경우, 페이지 전체를 새로고침하지 않기 위해 사용*/
 	$.ajax({
-		type : "post",
-		url : "/member/memberIdChk",
-		data : data,
-		success : function(result){
-			//console.log("성공 여부" + result);
-			if(result != 'fail'){
-				$('.id_input_re_1').css("display","inline-block");
-				$('.id_input_re_2').css("display", "none");					 
-				idckCheck = true;   // 아이디 중복이 없는 경우
-			} else {
-				$('.id_input_re_2').css("display","inline-block");
-				$('.id_input_re_1').css("display", "none");		
-				idckCheck = false;   // 아이디 중복이 있는 경우
-			}
-		}//success 종료
-	}); //ajax 종료
+			type : "post",					// 전송 방식 post
+			url : "/member/memberIdChk",	// 경로
+			data : data,					// 데이타
+			// success는 ajax통신에서 성공한 값을 가져오고 해당 function을 수행
+			success : function(result){		// success는 Controller에 있는 변수
+			
+				/*  console.log("성공 여부" + result); 테스트 */
+			
+				if(result != 'fail') {	// 중복 없으면
+						$('.id_input_re_1').css("display","inline-block");
+						$('.id_input_re_2').css("display", "none");	
+						idckCheck = true;
+				} else {
+						$('.id_input_re_2').css("display","inline-block");
+						$('.id_input_re_1').css("display", "none");
+						idckCheck = false;
+				}
+			}// success 종료
+	
+	});// ajax 종료
 	
 });// function 종료
-
-
-/* 인증번호 이메일 전송 */
-$(".mail_check_button").click(function(){
-	 var email = $(".mail_input").val();            // 입력한 이메일
-	 var cehckBox = $(".mail_check_input");        // 인증번호 입력란
-	 var boxWrap = $(".mail_check_input_box");    // 인증번호 입력란 박스
-	 var warnMsg = $(".mail_input_box_warn");    // 이메일 입력 경고글
-	 
-	  /* 이메일 형식 유효성 검사 */
-	    if(mailFormCheck(email)){
-	        warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.");
-	        warnMsg.css("display", "inline-block");
-	    } else {
-	        warnMsg.html("올바르지 못한 이메일 형식입니다.");
-	        warnMsg.css("display", "inline-block");
-	        return false;
-	    }    
-	    
-	$.ajax({
+	/* 인증번호 이메일 전송  */
+	$(".mail_check_button").click(function(){
 		
-		type:"GET",
-		url:"mailCheck?email=" + email,
-		success:function(data){
-			//console.log("data : " + data);
-            cehckBox.attr("disabled",false);
-            boxWrap.attr("id", "mail_check_input_box_true");
-            //$( 'h1' ).attr( 'title', 'Hello' );
-            //= h1 요소에 title 속성을 추가하고 속성의 값은 Hello로 합니다.
-            //즉, checkBox 요소에 disabled 속성을 추가하고 false로 값을 하여 인증번호 입력란에 기입 가능하게 만든다.
-            code = data;
-            //Controller부터 전달받은 인증번호를 위에서 선언한 code에 저장시키는 코드를 추가
-		}
+		var email = $(".mail_input").val();			// 입력한 이메일
+		var cehckBox = $(".mail_check_input");      // 인증번호 입력란
+	    var boxWrap = $(".mail_check_input_box");   // 인증번호 입력란 박스
+		
+		$.ajax({
+			
+			type:"GET",
+			url:"mailCheck?email=" + email,
+			success:function(data){
+				
+				 cehckBox.attr("disabled",false);
+				 boxWrap.attr("id", "mail_check_input_box_true");
+				 code = data;
+			}
+		});
 	});
-});
-
-
-
-/* 인증번호 비교 */
-$(".mail_check_input").blur(function(){ //해당 메서드는 인증번호 입력란에 데이터를 입력한 뒤 마우스로 다른 곳을 클릭 시에 실행이 됩니다.
-    
-    var inputCode = $(".mail_check_input").val();        // 입력코드    
-    var checkResult = $("#mail_check_input_box_warn");    // 비교 결과 
-    
-    if(inputCode == code){                            // 일치할 경우
-        checkResult.html("인증번호가 일치합니다.");
-        checkResult.attr("class", "correct");      
-        mailnumCheck = true;     // 일치할 경우
-    } else {                                            // 일치하지 않을 경우
-        checkResult.html("인증번호를 다시 확인해주세요.");
-        checkResult.attr("class", "incorrect");
-        mailnumCheck = false;    // 일치하지 않을 경우
-    }    
-        
-});
-
-
-
-/* 다음 주소 연동 */
-function execution_daum_address(){
+	
+	/* 인증번호 비교 */
+	$(".mail_check_input").blur(function(){	// blur이벤트는 포커스를 잃을 때 발생
+											// 인증번호 입력란에 입력 뒤 마우스로 다른 곳 클릭 시 실행
+		
+		var inputCode = $(".mail_check_input").val();        // 사용자 입력 코드    
+   		var checkResult = $("#mail_check_input_box_warn");   // 비교 결과
+   		
+   		if(inputCode == code){                            // 일치할 경우
+   	        checkResult.html("인증번호가 일치합니다.");
+   	        checkResult.attr("class", "correct");        
+   	    } else {                                            // 일치하지 않을 경우
+   	        checkResult.html("인증번호를 다시 확인해주세요.");
+   	        checkResult.attr("class", "incorrect");
+   	    }    
+   		
+	
+	});
+	
+	/* 비밀번호 확인 일치 유효성 검사 */
+	$('.pwck_input').on("propertychange change keyup paste input", function(){
+		
+		var pw = $('.pw_input').val();
+	    var pwck = $('.pwck_input').val();
+	    $('.final_pwck_ck').css('display', 'none');
+	    
+		// 비번과 비번확인이 같으면 일치한다는 경고글, 틀리면 틀리다는 경고글
+	    if(pw == pwck) {
+	        $('.pwck_input_re_1').css('display','block');
+	        $('.pwck_input_re_2').css('display','none');
+	        pwckcorCheck = true;
+	    } else {
+	        $('.pwck_input_re_1').css('display','none');
+	        $('.pwck_input_re_2').css('display','block');
+	        pwckcorCheck = false;
+	    }        
+	});
+	
+	/* 입력 이메일 형식 유효성 검사 */
+	function mailFormCheck(email) {
+		var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		return form.test(email);
+	}
+	
+ }); 
+	
+	/* 다음 주소 연동 */
+	function execution_daum_address(){
  
     new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-            
-        	// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
-
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
-            }
-
-            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-            if(data.userSelectedType === 'R'){
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
+        oncomplete: function(data) {	// data는 팝업창에서 선택한 주소에 대한 정보를 반환받는 객체의 변수
+				 /* 팝업에서 검색결과 항목을 클릭했을 때 실행할 코드를 작성하는 부분 */
+				
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; 		// 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+ 
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
                 }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+ 
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                  
+                    // 수정 후 , 주소변수 문자열과 참고항목 문자열 합치기
+                    addr += extraAddr;
+                   
+                } else {
+                	addr += ' '; // 수정
                 }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-                /* // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById("sample6_extraAddress").value = extraAddr; */
-             	// 주소변수 문자열과 참고항목 문자열 합치기
-                addr += extraAddr;
-            
-            } else {
-                addr += '';
-            }
-
-          /*   // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('sample6_postcode').value = data.zonecode;
-            document.getElementById("sample6_address").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("sample6_detailAddress").focus(); */
-            
-            $(".address_input_1").val(data.zonecode);
-            //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
-            $(".address_input_2").val(addr);
-            //$("[name=memberAddr2]").val(addr);            // 대체가능
-            
-         	// 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
-            $(".address_input_3").attr("readonly",false);
-            $(".address_input_3").focus();
-  
  
-        }
-    }).open();    
- 
-}
-
-/* 비밀번호 확인 일치 유효성 검사 */
-$('.pwck_input').on("propertychange change keyup paste input", function(){
- 
-    var pw = $('.pw_input').val();
-    var pwck = $('.pwck_input').val();
-    $('.final_pwck_ck').css('display', 'none');
- 
-    if(pw == pwck){
-        $('.pwck_input_re_1').css('display','block');
-        $('.pwck_input_re_2').css('display','none');
-        pwckcorCheck = true;
-    }else{
-        $('.pwck_input_re_1').css('display','none');
-        $('.pwck_input_re_2').css('display','block');
-        pwckcorCheck = false;
-    }        
-    
-});    
-/* 입력 이메일 형식 유효성 검사 */
-function mailFormCheck(email){
-   var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-   return form.test(email);
-}
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                $(".address_input_1").val(data.zonecode);
+	            //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+	            $(".address_input_2").val(addr);
+	            //$("[name=memberAddr2]").val(addr);            // 대체가능
+                
+	            // 커서를 상세주소 필드로 이동한다.
+	         	// 상세주소 입력란 disabled 속성 변경 및 커서를 상세주소 필드로 이동한다.
+	            $(".address_input_3").attr("readonly",false);
+	            $(".address_input_3").focus();
+			
+			}
+		}).open();
+	}	// 주소 API 끝
+	
+	
 </script>
 
 </body>

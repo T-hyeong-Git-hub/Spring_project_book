@@ -1,116 +1,361 @@
 @charset "UTF-8";
-*{
+ *{
 	margin: 0;
 	padding:0;
+	/* box-sizing: border-box; */
 }
 
-/* 화면 전체 렙 */
-.wrapper{
-	width: 100%;	
-}
-
-/* content 랩 */
-.wrap{
-	width : 800px;
-	margin: auto;
-}
-
-/* 페이지 로고 */
-.logo_wrap{
-	text-align: center;	
-	margin: 65px 0;	
-}
-.logo_wrap>span{
-	font-size : 50px;
-	font-weight: 900;
-}
-
-/* 홈페이지 기능 네비  */
+/* gnb */
 .top_gnb_area{
+	display: flex;
+    justify-content: space-between;
 	width: 100%;
     height: 50px;
-    background-color: #000000;
-    position:relative;
+    background-color: white;
+    position:relative;    
 }
+
+.top_gnb_area .home_logo {
+	margin-left: 3%;
+	margin-top: 1.2%;
+}
+
 .top_gnb_area .list{
-    position: absolute;
+	position: absolute;
     top: 0px;
     right: 0;
     
 }
- 
 .top_gnb_area .list li{
-    list-style: none;    
+	list-style: none;	
     float : left;
     padding: 13px 15px 0 10px;
     font-weight: 900;
     cursor: pointer;
 }
-/* 로고, 검색, 로그인 */
-.top_area{
-	width: 100%;
-    height: 150px;
-    /* background-color: #f7f0b9; */
-}
-/* 로고 영역 */
-.logo_area{
-	width: 25%;
-	height: 100%;
-	float:left;
-}
-.logo_area img{
-    width: 100%;
-    height: 100%;
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+body{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #c4c3ca;
+	background-color: white;
+	overflow-x: hidden;
 }
 
-/* 로그인 area */
-.id_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
+
+a {
+	cursor: pointer;
+  transition: all 200ms linear;
+}
+a:hover {
+	text-decoration: none;
+}
+.link {
+  color: #c4c3ca;
+}
+.link:hover {
+  color: #ffeba7;
+}
+p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+}
+h4 {
+  font-weight: 600;
+}
+h6 span{
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.section{
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.full-height{
+  min-height: 100vh;
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  position: absolute;
+  left: -9999px;
+}
+.checkbox:checked + label,
+.checkbox:not(:checked) + label{
+  position: relative;
+  display: block;
+  text-align: center;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #ffeba7;
+}
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before{
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #ffeba7;
+  background-color: #102770;
+  font-family: 'unicons';
+  content: '\eb4f';
+  z-index: 20;
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 24px;
+  transition: all 0.5s ease;
+}
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 400px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  margin-top: 60px;
+}
+.card-3d-wrapper {
+  width: 120%;
+  height: 120%;
+  position:absolute;    
+  top: 0;
+  left: 0;  
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: all 600ms ease-out; 
+}
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 300%;
+  position: absolute;
+  border: 2px solid #6AAFE6;
+  border-radius: 50px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card-back {
+  transform: rotateY(180deg);
+}
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+.center-wrap{
+  position: absolute;
+  width: 100%;
+  padding: 0 80px;
+  top: 50%;
+  left: 0;
+  transform: translate3d(0, -50%, 35px) perspective(100px);
+  z-index: 20;
+  display: block;
+}
+
+
+.form-group{ 
+  position: relative;
+  display: block;
+    margin: 0;
+    padding: 0;
+}
+.form-style {
+  padding: 13px 20px;
+  padding-left: 55px;
+  height: 48px;
+  width: 100%;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  outline: none;
+  color: #c4c3ca;
+  background-color: #1f2029;
+  border: none;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.form-style:focus,
+.form-style:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+.input-icon {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: left;
+  color: #ffeba7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+.form-group input:-ms-input-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input::-moz-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:-moz-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input::-webkit-input-placeholder  {
+  color: #c4c3ca;
+  opacity: 0.7;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus:-ms-input-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus::-moz-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus:-moz-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.form-group input:focus::-webkit-input-placeholder  {
+  opacity: 0;
+  -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+.btn{  
+  border-radius: 4px;
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition : all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #ffeba7;
+  color: #102770;
+  box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+}
+.btn:active,
+.btn:focus{  
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+.btn:hover{  
+  background-color: #102770;
+  color: #ffeba7;
+  box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+}
+
+.logo {
+	position: absolute;
+	top: 30px;
+	right: 30px;
 	display: block;
-	width : 35%;
-	margin : auto;	
+	z-index: 100;
+	transition: all 250ms linear;
 }
-.id_input{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
-}
-
-
-.pw_wrap{
-	margin-top: 10px;
-}
-.pw_input_box{
-	border: 1px solid black;
-	height:31px;
-	padding: 10px 14px;	
+.logo img {
+	height: 26px;
+	width: auto;
 	display: block;
-	width : 35%;
-	margin : auto;	
-}
-.pw_iput{
-	width:100%;
-	height:100%;
-	border:none;
-	font-size:28px;
 }
 
-
+/* 버튼 */
 .login_button_wrap{
-	margin-top: 20px;
+	margin-top: 40px;
 	text-align: center;
 }
 .login_button{
-	width: 39%;
-    height: 60px;
-    background-color: #6AAFE6;
-    font-size: 40px;
-    font-weight: 900;
-    color: white;
-    margin : auto;
+  border-radius: 4px;
+  height: 44px;
+  width: 39%;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transition : all 200ms linear;
+  transition: all 200ms linear;
+  padding: 0 30px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  background-color: #ffeba7;
+  color: #102770;
+  box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
 }
 
 .kakao_button_wrap{
@@ -118,75 +363,6 @@
 	text-align: center;
 	
 }
-
-/* footer navai 영역 */
-.footer_nav{
-    width:100%;
-    height:50px;
-}
-.footer_nav_container{
-    width: 100%;
-    height: 100%;
-    background-color:#8EC0E4;
-}
-.footer_nav_container>ul{
-    font-weight : bold;
-    float:left;
-    list-style:none;
-    position:relative;
-    padding-top:10px;
-    line-height: 27px;
-    font-family: dotum;
-    margin-left: 10px;
-}
-.footer_nav_container>ul>li{
-    display:inline;
-    width: 45px;
-    height: 19px;
-    padding: 10px 9px 0 10px;
-}
-.footer_nav_container>ul>span{
-    margin: 0 4px;
-}
-/* footer 영역 */
-.footer{
-    width:100%;
-    height:130px;
-    background-color:#D4DFE6;
-    padding-bottom : 50px;
-}
-.footer_container{
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
-.footer_left>img {
-    width: 150%;
-    height: 130px;
-    margin-left: -20px;
-    margin-top: -12px;
-}
-.footer_left{
-    float :left;
-    width: 170px;
-    margin-left: 20px;
-    margin-top : 30px;
-    
-}
-.footer_right{
-    float :left;
-    width: 680px;
-    margin-left: 70px;
-    margin-top : 30px;
-}   
-
-
-/* float 속성 해제 */
-.clearfix{
-	clear: both;
-}
-
- 
 /* 로그인 실패시 경고글 */
 .login_warn{
     margin-top: 30px;
