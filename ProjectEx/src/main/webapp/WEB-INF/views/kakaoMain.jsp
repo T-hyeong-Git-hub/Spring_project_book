@@ -6,86 +6,42 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome GUHAEBANG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome GUHAEBOOK</title>
 <link rel ="stylesheet" href = "resources/css/main.css">
+<!-- slick css -->
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/1986c6b16c.js" crossorigin="anonymous"></script>
+
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+  
+  <!-- slick js -->
  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+ 
+ <style type="text/css">
+	.slick-prev{
+		left: 100px;
+	}
+	
+	.slick-next{
+		right: 100px;
+	}
+	
+	.slick-prev:before, .slick-next:before{
+		color: gray;
+	}
+</style>
 </head>
 <body>
 
-<div class ="wrapper">
-	<div class ="wrap">
-		<div class = "top_gnb_area">
-            <ul class="list">
-            <c:if test = "${kakaoN == null}"> <!-- 로그인 x -->
-                <li >
-                    <a href="/member/login">로그인</a>
-                </li>
-                <li>
-                    <a href="/member/join">회원가입</a>
-                </li>
-                </c:if>
-                 <c:if test = "${kakaoN != null}"> <!-- 로그인 o -->
-                 	 <c:if test="${member.adminCk == 1 }"> <!-- 관리자 페이지 -->
-                        <li><a href="/admin/main">관리자 페이지</a></li>
-                    </c:if>
-                 <li>
-                 	<a id="gnb_logout_button">로그아웃</a>
-                 </li>
-                 <li>
-                 	마이 페이지
-                 </li>
-                  <li>
-                 	<a href="/cart/${member.memberId}">장바구니</a>
-                 </li>
-                </c:if> 	
-                <li>
-                    고객센터
-                </li>            
-            </ul>        
-		</div>
-		<div class ="top_area">
-			<div class = "logo_area">
-				<a href ="/main"><img src="resources/image/logo.png"></a>
-			</div>
-			<div class = "search_area">
-				<div class="search_wrap">
-                		<form id="searchForm" action="/search" method="get">
-                			<div class="search_input">
-                				<select name ="type">
-                					<option value = "T">책 제목</option>
-                					<option value = "A">작가</option>
-                				</select>
-                				<input type="text" name="keyword">
-                    			<button class='btn search_btn'>검 색</button>                				
-                			</div>
-                		</form>
-                	</div>
-			</div>
-			<div class = "login_area">
-			
-				  <!-- 로그인 하지 않은 상태 -->
-                  <c:if test = "${kakaoN == null}">
-                    <div class="login_button"><a href="/member/login">로그인</a></div>
-                    <span><a href="/member/join">회원가입</a></span>                
-                  </c:if>   
-                  
-                <!-- 로그인한 상태 -->
-                <c:if test="${ kakaoN != null }">
-                    <div class="login_success_area">
-                    	<span><i class="bi bi-person-fill">회원 : ${kakaoN}</i></span>
-                        <span><i class="bi bi-currency-dollar">충전금액 : <fmt:formatNumber value="0" pattern="\#,###.##"/></i></span>
-                        <span><i class="bi bi-coin">포인트 : <fmt:formatNumber value="0" pattern="#,###" /></i></span>
-                        <i class="bi bi-x-circle-fill"><a href="/member/logout.do">로그아웃</a></i>
-                    </div>
-                </c:if>
-			</div>
+<%@include file="includes/member/header_kakao.jsp" %>
+
 			<div class = "clearfix"></div>
 		</div>
 		<div class = "navi_bar_area">
@@ -111,23 +67,23 @@
 			</div>
 		</div>			
 		<div class = "content_area">
-				<div class="slide_div_wrap">
-				<div class="slide_div">
-					<div>
-						<a>
+			<div class="slide_div_wrap">
+					<div class="slide_div">
+						<div>
+							<a>
 							<img src="../resources/image/challenge.jpg">
-						</a>
-					</div>
-					<div>
-						<a>
+							</a>
+						</div>
+						<div>
+							<a>
 							<img src="../resources/image/sim.jpg">
-						</a>
-					</div>
-					<div>
-						<a>
-							<img src="../resources/image/sowone.jpg">
-						</a>
-					</div>				
+							</a>
+						</div>
+						<div>
+							<a>
+								<img src="../resources/image/sowone.jpg">
+							</a>
+						</div>				
 				</div>	
 			</div>
 			
@@ -165,19 +121,49 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function(){
-		$(".slide_div").slick({
-					dots: true,
-					autoplay : true,
-					autoplaySpeed: 5000
-				});
-		
-		$(".ls_div").slick({
-			slidesToShow: 4,
-			slidesToScroll: 4,
-			prevArrow : "<button type='button' class='ls_div_content_prev'>이전</button>",		// 이전 화살표 모양 설정
-			nextArrow : "<button type='button' class='ls_div_content_next'>다음</button>"			// 다음 화살표 모양 설정	
-		});
+$(document).ready(function(){
+	
+	/* 이벤트 베너 */
+	$(".slide_div").slick(
+			{
+				dots : true,
+				autoplay : true,
+				autoplaySpeed : 5000
+			}				
+	);	
+	
+	/* 베너 슬릭 */
+/* 	$(".slick_banner").slick(
+		{
+			dots : false,
+			autoplay : true,
+			autoplaySpeed : 3000,
+			arrows : false
+		}		
+	); */
+	
+	/* 베스트 상품 */
+	$(".ls_div").slick({
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		prevArrow : "<button type='button' class='ls_div_content_prev'>←</button>",		// 이전 화살표 모양 설정
+		nextArrow : "<button type='button' class='ls_div_content_next'>→</button>",		// 다음 화살표 모양 설정	
+		/* 화면의 크기에 따라 달라짐 */
+		responsive: [ // 반응형 웹 구현 옵션
+                    {  
+                        breakpoint: 960, //화면 사이즈 960px 일 때, 3개 출력
+                        settings: {
+                            slidesToShow:3 
+                        } 
+                    },
+                    { 
+                        breakpoint: 768, //화면 사이즈 768px 일 때, 2개 출력
+                        settings: {    
+                            slidesToShow:2 
+                        } 
+                    }
+                ]
+	});		
 	
 	/* 이미지 삽입 */
 	$(".image_wrap").each(function(i, obj){
@@ -196,8 +182,22 @@
 			$(this).find("img").attr('src', '/resources/image/noImage.png');
 		}
 		
+	});			
+	
+	/* 검색 버튼 동작 */
+	$(".search_btn").on("click", function(){
+		
+		let searchKeyword = $(".search_input input[name='keyword']").val();
+		
+		if(searchKeyword == "" || searchKeyword == null) {
+			alert("검색어를 입력하세요");
+			return false;
+		}
+		
+		$(this).submit();
 	});
-});
+	
+});		/* ready() */
  
     /* gnb_area 로그아웃 버튼 작동 */
     $("#gnb_logout_button").click(function(){
@@ -214,6 +214,7 @@
     });
     
 </script>
+ 
  
 </body>
 </html>

@@ -8,14 +8,18 @@
 <meta charset="UTF-8">
 <title>Welcome GUHAEBANG</title>
 <link rel ="stylesheet" href = "/resources/css/goodsDetail.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+ 
+ <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>  
 </head>
 <body>
 
-<%@include file="includes/member/header.jsp" %>
+<%@include file="includes/member/header2.jsp" %>
 			<div class = "clearfix"></div>
 		</div>
 		<div class = "content_area">
@@ -110,39 +114,11 @@
 					
 				</div>
 				<ul class="reply_content_ul">
-						<!-- <li>
-						<div class="comment_wrap">
-							<div class="reply_top">
-								<span class="id_span">sjinjin7</span>
-								<span class="date_span">2021-10-11</span>
-								<span class="rating_span">평점 : <span class="rating_value_span">4</span>점</span>
-								<a class="update_reply_btn">수정</a><a class="delete_reply_btn">삭제</a>
-							</div>
-							<div class="reply_bottom">
-								<div class="reply_bottom_txt">
-									사실 기대를 많이하고 읽기시작했는데 읽으면서 가가 쓴것이 맞는지 의심들게합니다 문체도그렇고 간결하지 않네요 제가 기대가 크던 작았던간에 책장이 사실 안넘겨집니다.
-								</div>
-							</div>
-						</div>
-					</li> -->
+					
 				</ul>
 				<div class="repy_pageInfo_div">
 					<ul class="pageMaker">
-						<!-- <li class="pageMaker_btn prev">
-							<a>이전</a>
-						</li>
-						<li class="pageMaker_btn">
-							<a>1</a>
-						</li>
-						<li class="pageMaker_btn">
-							<a>2</a>
-						</li>
-						<li class="pageMaker_btn active">
-							<a>3</a>
-						</li>													
-						<li class="pageMaker_btn next">
-							<a>다음</a>
-						</li> -->
+			
 					</ul>
 				</div>
 			</div>

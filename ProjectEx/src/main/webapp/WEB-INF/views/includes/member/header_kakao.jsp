@@ -8,11 +8,11 @@
 <div class="wrapper">
 	<div class="wrap">
 		<div class="top_gnb_area">
-		<a class="home_logo" href="/main">
-			<i class="fa-solid fa-house"></i>
-	    </a>
+			<a class="home_logo" href="/main">
+				<i class="fa-solid fa-house"></i>
+		    </a>
 			<ul class="list">
-				<c:if test = "${member == null }">	<!-- 비 로그인 -->
+				<c:if test = "${kakaoN == null}">	<!-- 비 로그인 -->
 					<li>
 						<a href="/member/login">로그인</a>	
 					</li>
@@ -21,12 +21,12 @@
 					</li>
 				</c:if>
 				
-				<c:if test = "${member != null }"> 	<!-- 로그인 -->
+				<c:if test = "${kakaoN != null}"> 	<!-- 로그인 -->
 					<c:if test = "${member.adminCk == 1 }">	<!-- 관리자 계정 -->
                         <li><a href="/admin/main">관리자 페이지</a></li>
                     </c:if>
 					<li>
-						<a href="/member/logout.do">로그아웃</a>
+						<a id="gnb_logout_button">로그아웃</a>
 					</li>
 					<li>
 						<a href="/cart/${member.memberId}">장바구니</a>
@@ -58,13 +58,14 @@
                	
                	</div>
 			</div>
-			<div class="login_area">
 			
+			<div class="login_area">
 			<!-- 로그인 하지 않은 상태 -->
-			<c:if test = "${member == null }">
+			<c:if test = "${kakaoN == null}">
 				<!-- <div class="login_button"><a href="/member/login">로그인</a></div> -->
-				<div class="slick_banner">
-						<div>
+						<div class="slick_banner">
+				
+					<div>
 						<a>
 							<img src="../resources/image/25SALE.jpg">
 						</a>
@@ -83,18 +84,18 @@
 			</c:if>
 			
 			<!-- 로그인한 상태 -->
-	        <c:if test="${ member != null }">
+	        <c:if test="${ kakaoN != null }">
                 <div class="login_success_area">
-                   <span><i class="bi bi-person-fill">회원 : ${member.memberName}</i></span>
-                   <span><i class="bi bi-currency-dollar">충전금액 : <fmt:formatNumber value="${member.money }" pattern="\#,###.##"/></i></span>
-                   <span><i class="bi bi-coin">포인트 : <fmt:formatNumber value="${member.point }" pattern="#,###" /></i></span>
+                    <span><i class="bi bi-person-fill"></i> 회원 : ${kakaoN}</span>
+                    <span><i class="bi bi-currency-dollar"></i> 충전금액 : <fmt:formatNumber value="0" pattern="\#,###.##"/></span>
+                    <span><i class="bi bi-coin"></i> 포인트 : <fmt:formatNumber value="0" pattern="#,###" /></span>
                     	 <i class="bi bi-x-circle-fill"><a href="/member/logout.do">로그아웃</a></i>
                 </div>
             </c:if>		
 			
 			</div>
 			
-				<script>
+			<script>
 			
 			$(document).ready(function(){
 				
