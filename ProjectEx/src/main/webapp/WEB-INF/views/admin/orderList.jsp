@@ -60,7 +60,7 @@
                     	<!-- 게시물 x -->
                     	<c:if test = "${listCheck == 'empty' }">
                     		<div class = "table_empty">
-                    		등록된 작가가 없습니다.
+                    		해당 주문이 없습니다.
                     		</div>
                     	</c:if>	                			
                     </div> 
