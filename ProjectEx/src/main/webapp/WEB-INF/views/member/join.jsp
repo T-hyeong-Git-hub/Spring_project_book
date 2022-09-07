@@ -66,7 +66,7 @@
 			<div class="pw_wrap">
 				<div class="pw_name">비밀번호</div>
 				<!-- <div class="pw_input_box"> -->
-					<input class="pw_input form-style" name="memberPw">
+					<input class="pw_input form-style" name="memberPw" type ='password'>
 				<!-- </div> -->
 				<span class="final_pw_ck form-style">비밀번호를 입력해주세요.</span>
 				<span class="pwck_input_re_1">비밀번호가 일치합니다.</span>
@@ -77,7 +77,7 @@
 			<div class="pwck_wrap">
 				<div class="pwck_name">비밀번호 확인</div>
 				<!-- <div class="pwck_input_box"> -->
-					<input class="pwck_input form-style">
+					<input class="pwck_input form-style" type ='password'>
 				<!-- </div> -->
 				<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span>
 			</div>
@@ -85,18 +85,14 @@
 			<!-- name -->
 			<div class="user_wrap">
 				<div class="user_name">이름</div>
-				<!-- <div class="user_input_box"> -->
 					<input class="user_input form-style" name="memberName">
-				<!-- </div> -->
 				<span class="final_name_ck">이름을 입력해주세요.</span>
 			</div>
 			
 			<!-- email -->
 			<div class="mail_wrap">
 				<div class="mail_name">이메일</div> 
-				<!-- <div class="mail_input_box"> -->
 					<input class="mail_input form-style" name="memberMail">
-				<!-- </div> -->
 				<span class="final_mail_ck">이메일을 입력해주세요.</span>
 				<span class="mail_input_box_warn"></span>
 			</div>

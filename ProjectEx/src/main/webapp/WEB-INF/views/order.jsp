@@ -21,7 +21,7 @@
 			<div class = "clearfix"></div>
 		</div>
 		<div class = "content_area">
-			<div class="content_subject"><span>장바구니</span></div>
+			<div class="content_subject"><span>주문</span></div>
 			
 			<div class="content_main">
 				<!-- 회원 정보 -->
